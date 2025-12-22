@@ -1,9 +1,121 @@
 ---
+import AutoGrid from "@/components/AutoGrid.astro";
+import Button from "@/components/Button.astro";
+import FlexGroup from "@/components/FlexGroup.astro";
+import Wrapper from "@/components/Wrapper.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout>
-  <h1>Astro</h1>
+  <div class="pad-sect-md">
+    <Wrapper width="narrow">
+      <h1>Extensions List</h1>
+      <FlexGroup center>
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+        <Button variant="default" size="large" text="test" icon="icon-moon" />
+        <Button variant="active" size="small" text="Active" />
+      </FlexGroup>
+      <AutoGrid type="fit" minWidth="5rem" data-theme="light">
+        <div
+          class="card bg-container-default"
+          data-theme="dark"
+          data-brand="blue"
+        >
+          <h2 class="fg-text-strong fs-title-md">This is a title</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            corrupti unde dolores repellat aliquid. Qui quasi commodi quidem
+            ipsum quia reprehenderit tempore labore nihil, assumenda rem fuga
+            beatae inventore quisquam minima maxime ut sed obcaecati facere
+            voluptatum voluptatibus consequuntur ratione aliquam. Nam
+            perspiciatis earum voluptatem porro. Labore id unde totam cumque
+            facere nisi saepe adipisci reprehenderit repudiandae laudantium
+            voluptatem libero enim quae exercitationem odit vitae quidem,
+            consectetur repellat quo quis.
+          </p>
+          <Button variant="active" size="small" text="Active" />
+        </div>
+        <div class="card bg-container-default">
+          <h2 class="fg-text-strong fs-title-md">This is a title</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            corrupti unde dolores repellat aliquid. Qui quasi commodi quidem
+            ipsum quia reprehenderit tempore labore nihil, assumenda rem fuga
+            beatae inventore quisquam minima maxime ut sed obcaecati facere
+            voluptatum voluptatibus consequuntur ratione aliquam. Nam
+            perspiciatis earum voluptatem porro. Labore id unde totam cumque
+            facere nisi saepe adipisci reprehenderit repudiandae laudantium
+            voluptatem libero enim quae exercitationem odit vitae quidem,
+            consectetur repellat quo quis.
+          </p>
+          <Button variant="active" size="small" text="Active" />
+        </div>
+        <div class="card bg-container-default">
+          <h2 class="fg-text-strong fs-title-md">This is a title</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            corrupti unde dolores repellat aliquid. Qui quasi commodi quidem
+            ipsum quia reprehenderit tempore labore nihil, assumenda rem fuga
+            beatae inventore quisquam minima maxime ut sed obcaecati facere
+            voluptatum voluptatibus consequuntur ratione aliquam. Nam
+            perspiciatis earum voluptatem porro. Labore id unde totam cumque
+            facere nisi saepe adipisci reprehenderit repudiandae laudantium
+            voluptatem libero enim quae exercitationem odit vitae quidem,
+            consectetur repellat quo quis.
+          </p>
+          <Button variant="active" size="small" text="Active" />
+        </div>
+        <div class="card bg-container-default">
+          <h2 class="fg-text-strong fs-title-md">This is a title</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            corrupti unde dolores repellat aliquid. Qui quasi commodi quidem
+            ipsum quia reprehenderit tempore labore nihil, assumenda rem fuga
+            beatae inventore quisquam minima maxime ut sed obcaecati facere
+            voluptatum voluptatibus consequuntur ratione aliquam. Nam
+            perspiciatis earum voluptatem porro. Labore id unde totam cumque
+            facere nisi saepe adipisci reprehenderit repudiandae laudantium
+            voluptatem libero enim quae exercitationem odit vitae quidem,
+            consectetur repellat quo quis.
+          </p>
+          <Button variant="active" size="small" text="Active" />
+        </div>
+      </AutoGrid>
+    </Wrapper>
+    <p class="fw-regular uppercase text-center">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium,
+      commodi voluptatem? Nihil voluptatum magnam cumque modi exercitationem.
+      Perspiciatis, omnis quis?
+    </p>
+  </div>
+  <input type="checkbox" name="" id="" />
+  <input type="radio" name="" id="" />
 </MainLayout>
 
-<style></style>
+<style lang="scss">
+  .card {
+    border-radius: var(--br-lg);
+    padding: var(--pad-cont-lg);
+  }
+
+  h1 {
+    background-color: var(--clr-brand-400);
+  }
+</style>
