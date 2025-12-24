@@ -1,0 +1,137 @@
+---
+// Asset imports
+import IconLight from "@assets/icon-moon.svg";
+import IconDark from "@assets/icon-sun.svg";
+
+// Types
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+  label?: string;
+  classes?: string;
+}
+
+const { label = "Dark Mode", classes, ...rest } = Astro.props;
+---
+
+<button
+  class:list={["theme-toggle", classes]}
+  id="theme-toggle"
+  aria-label={label}
+  aria-pressed="false"
+  {...rest}
+>
+  <IconLight class="icon icon-light" aria-hidden="true" />
+  <IconDark class="icon icon-dark" aria-hidden="true" />
+</button>
+
+<style lang="scss">
+  button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--clr-fg-icon-theme-idle);
+    background-color: var(--clr-bg-icon-theme-idle);
+    border: none;
+    cursor: pointer;
+    padding: var(--pad-select-sm);
+    border-radius: var(--br-sm);
+    transition:
+      color var(--transition-default),
+      background-color var(--transition-default);
+
+    &:hover {
+      color: var(--clr-fg-icon-theme-hover);
+      background-color: var(--clr-bg-icon-theme-hover);
+    }
+
+    &:focus {
+      outline: 0px solid transparent;
+    }
+
+    &:focus-visible {
+      outline: var(--bw-lg) solid var(--clr-btn-default-focus-outline);
+      outline-offset: var(--bw-lg);
+    }
+
+    // Icon
+    &[aria-pressed="false"] .icon-dark {
+      display: none;
+    }
+
+    &[aria-pressed="true"] .icon-light {
+      display: none;
+    }
+
+    > .icon {
+      width: var(--size-icon-theme);
+    }
+  }
+</style>
+
+<script>
+  // Elements
+  const root = document.documentElement as HTMLElement;
+  const themeToggle = document.getElementById(
+    "theme-toggle"
+  ) as HTMLButtonElement;
+
+  //   Constants
+  const storageKey = "theme-preference";
+  const theme = {
+    value: getThemePreference(),
+  };
+
+  //   Functions
+  function getThemePreference() {
+    const theme = localStorage.getItem(storageKey);
+    if (theme !== null) {
+      return theme;
+    } else
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+  }
+
+  function setThemePreference() {
+    localStorage.setItem(storageKey, theme.value);
+  }
+
+  function setTheme() {
+    root.setAttribute("data-theme", theme.value);
+    themeToggle.setAttribute(
+      "aria-pressed",
+      theme.value === "dark" ? "true" : "false"
+    );
+  }
+
+  function handleThemeChange() {
+    setThemePreference();
+
+    if (!document.startViewTransition) {
+      setTheme();
+      return;
+    }
+
+    document.startViewTransition(() => {
+      setTheme();
+    });
+  }
+
+  //   Function-calls
+  setTheme();
+
+  // Event-listeners
+  themeToggle.addEventListener("click", () => {
+    // flip current value
+    theme.value = theme.value === "light" ? "dark" : "light";
+    handleThemeChange();
+  });
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      theme.value = e.matches ? "dark" : "light";
+      handleThemeChange();
+    });
+</script>

@@ -11,7 +11,14 @@ $padding-page-block-end-min: 64px;
 $padding-page-block-end-max: 64px;
 
 $padding-page: (
-  "inline":
+  "inline-start":
+    fluid(
+      $padding-page-inline-min,
+      $padding-page-inline-max,
+      $viewport-min,
+      map.get($breakpoints, "medium")
+    ),
+  "inline-end":
     fluid(
       $padding-page-inline-min,
       $padding-page-inline-max,

@@ -15,7 +15,7 @@ const { width = "default", ...rest } = Astro.props;
 
 <style lang="scss">
   .wrapper {
-    --padding: calc(var(--pad-page-inline) * 2);
+    --padding: calc(var(--pad-page-inline-start) + var(--pad-page-inline-end));
 
     width: min(100% - var(--padding), var(--max-width));
     margin-inline: auto;

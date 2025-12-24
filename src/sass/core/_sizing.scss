@@ -8,11 +8,11 @@ $wrapper-sizes: (
 );
 
 //  Logo
-$size-logo-md-min: 40px;
-$size-logo-md-max: 40px;
+$size-logo-md-width-min: 179px;
+$size-logo-md-width-max: 179px;
 
 $logo-sizes: (
-  "md": fluid($size-logo-md-min, $size-logo-md-max),
+  "md": fluid($size-logo-md-width-min, $size-logo-md-width-max),
 );
 
 // Icons

@@ -1,0 +1,22 @@
+---
+// Component imports
+import FlexGroup from "../utilities/FlexGroup.astro";
+import ThemeToggle from "../utilities/ThemeToggle.astro";
+import Wrapper from "../utilities/Wrapper.astro";
+
+// Asset imports
+import Logo from "@assets/logo.svg";
+---
+
+<header>
+  <Wrapper>
+    <div class="bg-container-default pad-block-sm pad-inline-md br-md">
+      <FlexGroup primAxis="between">
+        <a href="/" aria-label="Home">
+          <Logo width={179} aria-hidden="true" />
+        </a>
+        <ThemeToggle />
+      </FlexGroup>
+    </div>
+  </Wrapper>
+</header>

@@ -58,10 +58,14 @@ $background-colors: (
       "dark": "neutral-800",
     ),
   ),
-  "icon": (
-    "default": (
+  "icon-theme": (
+    "idle": (
       "light": "neutral-100",
       "dark": "neutral-700",
+    ),
+    "hover": (
+      "light": "neutral-300",
+      "dark": "neutral-600",
     ),
   ),
 );
@@ -78,10 +82,24 @@ $foreground-colors: (
       "dark": "neutral-000",
     ),
   ),
-  "icon": (
-    "default": (
+  "icon-theme": (
+    "idle": (
       "light": "neutral-900",
       "dark": "neutral-000",
+    ),
+    "hover": (
+      "light": "neutral-900",
+      "dark": "neutral-000",
+    ),
+  ),
+  "logo": (
+    "text": (
+      "light": "neutral-900",
+      "dark": "neutral-000",
+    ),
+    "visual": (
+      "light": "brand-700",
+      "dark": "brand-400",
     ),
   ),
 );

@@ -1,3 +1,20 @@
 :root {
   --transition-default: 250ms ease-in;
 }
+
+::view-transition-old(root) {
+  animation-delay: 500ms;
+}
+
+::view-transition-new(root) {
+  animation: circle-in 500ms;
+}
+
+@keyframes circle-in {
+  from {
+    clip-path: circle(0% at 50% 0%);
+  }
+  to {
+    clip-path: circle(130% at 50% 0%);
+  }
+}

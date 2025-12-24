@@ -1,12 +1,14 @@
 body {
-  font-family: var(--ff-base);
+  font: var(--font-5);
+  letter-spacing: var(--ls-md);
   color: var(--clr-fg-text-base);
   background-image: linear-gradient(
     180deg,
     var(--clr-bg-canvas-gradient-start),
     var(--clr-bg-canvas-gradient-end)
   );
-  font-size: var(--fs-body-md);
+  padding-block-start: var(--pad-page-block-start);
+  padding-block-end: var(--pad-page-block-end);
 }
 ::selection {
   background-color: green;
