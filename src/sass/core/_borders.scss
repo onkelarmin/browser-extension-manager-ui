@@ -1,0 +1,19 @@
+$border-widths: (
+  "md": 1px,
+  "lg": 2px,
+);
+
+$border-colors: (
+  "default": (
+    "light": "neutral-200",
+    "dark": "neutral-600",
+  ),
+);
+
+$borders: (
+  "default": (
+    "width": "md",
+    "style": "solid",
+    "color": "default",
+  ),
+);

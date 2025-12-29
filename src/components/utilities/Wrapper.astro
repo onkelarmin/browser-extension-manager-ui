@@ -4,12 +4,13 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"div"> {
   width?: "default" | "narrow" | "wide" | "full";
+  classes?: string;
 }
 
-const { width = "default", ...rest } = Astro.props;
+const { width = "default", classes, ...rest } = Astro.props;
 ---
 
-<div class:list={["wrapper", width]} {...rest}>
+<div class:list={["wrapper", width, classes]} {...rest}>
   <slot />
 </div>
 

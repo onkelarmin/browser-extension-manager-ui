@@ -55,15 +55,15 @@ const {
 
     // Themes
     &.default {
-      background-color: var(--clr-btn-default-idle-bg);
-      color: var(--clr-btn-default-idle-fg);
-      border-color: var(--clr-btn-default-idle-border);
+      background-color: var(--btn-default-idle-bg);
+      color: var(--btn-default-idle-fg);
+      border-color: var(--btn-default-idle-border);
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--clr-btn-default-hover-bg);
-          color: var(--clr-btn-default-hover-fg);
-          border-color: var(--clr-btn-default-hover-border);
+          background-color: var(--btn-default-hover-bg);
+          color: var(--btn-default-hover-fg);
+          border-color: var(--btn-default-hover-border);
         }
       }
 
@@ -72,23 +72,23 @@ const {
       }
 
       &:focus-visible {
-        border-color: var(--clr-btn-default-focus-border);
+        border-color: var(--btn-default-focus-border);
         box-shadow:
-          0 0 0 var(--bw-lg) var(--clr-btn-default-focus-border),
-          0 0 0 calc(var(--bw-lg) * 2) var(--clr-btn-default-focus-outline);
+          0 0 0 var(--bw-lg) var(--btn-default-focus-border),
+          0 0 0 calc(var(--bw-lg) * 2) var(--btn-default-focus-outline);
       }
     }
 
     &.active {
-      background-color: var(--clr-btn-active-idle-bg);
-      color: var(--clr-btn-active-idle-fg);
-      border-color: var(--clr-btn-active-idle-border);
+      background-color: var(--btn-active-idle-bg);
+      color: var(--btn-active-idle-fg);
+      border-color: var(--btn-active-idle-border);
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--clr-btn-active-hover-bg);
-          color: var(--clr-btn-active-hover-fg);
-          border-color: var(--clr-btn-active-hover-border);
+          background-color: var(--btn-active-hover-bg);
+          color: var(--btn-active-hover-fg);
+          border-color: var(--btn-active-hover-border);
         }
       }
 
@@ -97,10 +97,10 @@ const {
       }
 
       &:focus-visible {
-        border-color: var(--clr-btn-active-focus-border);
+        border-color: var(--btn-active-focus-border);
         box-shadow:
-          0 0 0 var(--bw-lg) var(--clr-btn-active-focus-border),
-          0 0 0 calc(var(--bw-lg) * 2) var(--clr-btn-active-focus-outline);
+          0 0 0 var(--bw-lg) var(--btn-active-focus-border),
+          0 0 0 calc(var(--bw-lg) * 2) var(--btn-active-focus-outline);
       }
     }
 

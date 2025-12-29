@@ -47,21 +47,4 @@
   @each $size, $value in $spacer-container {
     --space-cont-#{$size}: #{$value};
   }
-
-  // Border-widths
-  @each $size, $value in $border-widths {
-    --bw-#{$size}: #{px-to-rem($value)};
-  }
-
-  // Border-radius
-  @each $size, $value in $border-radius {
-    --br-#{$size}: #{$value};
-  }
-  --br-round: 50%;
-  --br-pill: 100vmax;
-
-  // Box-shadows
-  @each $size, $value in $box-shadows {
-    --bs-#{$size}: #{$value};
-  }
 }

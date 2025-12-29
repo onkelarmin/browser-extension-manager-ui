@@ -1,0 +1,34 @@
+---
+// Library imports
+import { Icon } from "astro-icon/components";
+
+// Component imports
+import Heading from "../utilities/Heading.astro";
+import FlexGroup from "../utilities/FlexGroup.astro";
+import Button from "../utilities/Button.astro";
+
+type Props = {
+  title: string;
+  desc: string;
+  logo: string;
+  isActive: boolean;
+};
+
+const { title, desc, logo, isActive } = Astro.props;
+---
+
+<article class="border-default">
+  <Icon name={logo} aria-hidden="true" />
+  <Heading tag="h2" size="h2" text={title} />
+  <p>{desc}</p>
+  <FlexGroup primAxis="between">
+    <Button variant="default" size="small" text="Remove" />
+    <input type="checkbox" name="" id="" />
+  </FlexGroup>
+</article>
+
+<style lang="scss">
+  [data-icon] {
+    width: var(--size-icon-card);
+  }
+</style>

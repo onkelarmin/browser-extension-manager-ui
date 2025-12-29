@@ -30,8 +30,8 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    color: var(--clr-fg-icon-theme-idle);
-    background-color: var(--clr-bg-icon-theme-idle);
+    color: var(--fg-icon-theme-idle);
+    background-color: var(--bg-icon-theme-idle);
     border: none;
     cursor: pointer;
     padding: var(--pad-select-sm);
@@ -41,8 +41,8 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
       background-color var(--transition-default);
 
     &:hover {
-      color: var(--clr-fg-icon-theme-hover);
-      background-color: var(--clr-bg-icon-theme-hover);
+      color: var(--fg-icon-theme-hover);
+      background-color: var(--bg-icon-theme-hover);
     }
 
     &:focus {
@@ -50,7 +50,7 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
     }
 
     &:focus-visible {
-      outline: var(--bw-lg) solid var(--clr-btn-default-focus-outline);
+      outline: var(--bw-lg) solid var(--btn-default-focus-outline);
       outline-offset: var(--bw-lg);
     }
 

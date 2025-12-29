@@ -1,6 +1,8 @@
 @use "sass:color";
 
 $box-shadows: (
-  "1": 0px 1px 3px 0px color.change(#0a0d12, $alpha: 0.15),
-  "2": 0px 1px 2px -1px color.change(#0a0d12, $alpha: 0.15),
+  "toggle-1": 0px 1px 3px 0px color.change(#0a0d12, $alpha: 0.15),
+  "toggle-2": 0px 1px 2px -1px color.change(#0a0d12, $alpha: 0.15),
+  "card-1": 0px 2px 2px 0px color.change(#c2cee1, $alpha: 0.2),
+  "card-2": 0px 1px 5px 1px color.change(#c2cee1, $alpha: 0.22),
 );

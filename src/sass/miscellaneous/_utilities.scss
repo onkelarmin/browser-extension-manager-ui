@@ -4,7 +4,7 @@
 @each $context, $semantic-map in $background-colors {
   @each $semantic, $value in $semantic-map {
     .bg-#{$context}-#{$semantic} {
-      background-color: var(--clr-bg-#{$context}-#{$semantic});
+      background-color: var(--bg-#{$context}-#{$semantic});
     }
   }
 }
@@ -13,7 +13,7 @@
 @each $context, $semantic-map in $foreground-colors {
   @each $semantic, $value in $semantic-map {
     .fg-#{$context}-#{$semantic} {
-      color: var(--clr-fg-#{$context}-#{$semantic});
+      color: var(--fg-#{$context}-#{$semantic});
     }
   }
 }
@@ -36,6 +36,17 @@
 
 .pill {
   border-radius: var(--br-pill);
+}
+
+// Borders
+@each $type, $property-map in $borders {
+  .border-#{$type} {
+    border: var(--border-#{$type});
+  }
+}
+
+.border-none {
+  border: none;
 }
 
 // Box-shadows
@@ -79,6 +90,11 @@
 // Centre horizontally
 .mx-auto {
   margin-inline: auto;
+}
+
+// List-style-none
+.list-style-none {
+  list-style: none;
 }
 
 // Page padding

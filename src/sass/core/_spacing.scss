@@ -64,11 +64,14 @@ $spacer-container-md-min: 12px;
 $spacer-container-md-max: 12px;
 $spacer-container-lg-min: 16px;
 $spacer-container-lg-max: 16px;
+$spacer-container-xl-min: 24px;
+$spacer-container-xl-max: 24px;
 
 $spacer-container: (
   "sm": fluid($spacer-container-sm-min, $spacer-container-sm-max),
   "md": fluid($spacer-container-md-min, $spacer-container-md-max),
   "lg": fluid($spacer-container-lg-min, $spacer-container-lg-max),
+  "xl": fluid($spacer-container-xl-min, $spacer-container-xl-max),
 );
 
 // Selectable padding

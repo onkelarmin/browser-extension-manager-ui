@@ -1,6 +1,65 @@
 ---
 // Component imports
+import ExtensionCard from "@/components/atomic/ExtensionCard.astro";
+import Button from "@/components/utilities/Button.astro";
+import FlexGroup from "@/components/utilities/FlexGroup.astro";
+import Heading from "@/components/utilities/Heading.astro";
+import Wrapper from "@/components/utilities/Wrapper.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+
+// Content Collection
+import { getCollection } from "astro:content";
+
+const allExtensions = await getCollection("extensions");
 ---
 
-<MainLayout />
+<MainLayout>
+  <section class="extensions-section" aria-labelledby="extensions-title">
+    <div class="pad-sect-start-md">
+      <Wrapper>
+        <header>
+          <FlexGroup dir="col" primAxis="between" gap="xl" classes="dir-md-row">
+            <Heading
+              tag="h1"
+              size="h1"
+              text="Extensions List"
+              id="extensions-title"
+            />
+
+            <fieldset class="border-none">
+              <legend class="visually-hidden">Filter by status</legend>
+              <FlexGroup>
+                <Button text="All" variant="default" size="large" />
+                <Button text="Active" variant="default" size="large" />
+                <Button text="Inactive" variant="default" size="large" />
+              </FlexGroup>
+            </fieldset>
+          </FlexGroup>
+        </header>
+        <ul class="extensions-list">
+          {
+            allExtensions.map((e) => (
+              <li>
+                <ExtensionCard
+                  title={e.data.name}
+                  logo={e.data.logo}
+                  desc={e.data.description}
+                  isActive={e.data.isActive}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </Wrapper>
+    </div>
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .extensions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    gap: var(--space-cont-md);
+    list-style: none;
+  }
+</style>

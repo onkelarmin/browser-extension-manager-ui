@@ -8,7 +8,7 @@
     @each $semantic, $mode-map in $semantic-map {
       @each $mode, $value in $mode-map {
         @if $mode == $theme {
-          --clr-bg-#{$context}-#{$semantic}: var(--clr-#{$value});
+          --bg-#{$context}-#{$semantic}: var(--clr-#{$value});
         }
       }
     }
@@ -18,18 +18,16 @@
     @each $semantic, $mode-map in $semantic-map {
       @each $mode, $value in $mode-map {
         @if $mode == $theme {
-          --clr-fg-#{$context}-#{$semantic}: var(--clr-#{$value});
+          --fg-#{$context}-#{$semantic}: var(--clr-#{$value});
         }
       }
     }
   }
-  // Stroke-colors
-  @each $context, $semantic-map in $stroke-colors {
-    @each $semantic, $mode-map in $semantic-map {
-      @each $mode, $value in $mode-map {
-        @if $mode == $theme {
-          --clr-stroke-#{$context}-#{$semantic}: var(--clr-#{$value});
-        }
+  // Border-colors
+  @each $semantic, $mode-map in $border-colors {
+    @each $mode, $value in $mode-map {
+      @if $mode == $theme {
+        --bc-#{$semantic}: var(--clr-#{$value});
       }
     }
   }
@@ -39,7 +37,7 @@
       @each $role, $mode-map in $role-map {
         @each $mode, $value in $mode-map {
           @if $mode == $theme {
-            --clr-btn-#{$variant}-#{$state}-#{$role}: var(--clr-#{$value});
+            --btn-#{$variant}-#{$state}-#{$role}: var(--clr-#{$value});
           }
         }
       }
@@ -58,7 +56,7 @@
     @each $semantic, $mode-map in $semantic-map {
       @each $mode, $value in $mode-map {
         @if $mode == $theme {
-          --clr-bg-#{$context}-#{$semantic}: var(--clr-#{$value});
+          --bg-#{$context}-#{$semantic}: var(--clr-#{$value});
         }
       }
     }
@@ -68,18 +66,16 @@
     @each $semantic, $mode-map in $semantic-map {
       @each $mode, $value in $mode-map {
         @if $mode == $theme {
-          --clr-fg-#{$context}-#{$semantic}: var(--clr-#{$value});
+          --fg-#{$context}-#{$semantic}: var(--clr-#{$value});
         }
       }
     }
   }
-  // Stroke-colors
-  @each $context, $semantic-map in $stroke-colors {
-    @each $semantic, $mode-map in $semantic-map {
-      @each $mode, $value in $mode-map {
-        @if $mode == $theme {
-          --clr-stroke-#{$context}-#{$semantic}: var(--clr-#{$value});
-        }
+  // Border-colors
+  @each $semantic, $mode-map in $border-colors {
+    @each $mode, $value in $mode-map {
+      @if $mode == $theme {
+        --bc-#{$semantic}: var(--clr-#{$value});
       }
     }
   }
@@ -89,7 +85,7 @@
       @each $role, $mode-map in $role-map {
         @each $mode, $value in $mode-map {
           @if $mode == $theme {
-            --clr-btn-#{$variant}-#{$state}-#{$role}: var(--clr-#{$value});
+            --btn-#{$variant}-#{$state}-#{$role}: var(--clr-#{$value});
           }
         }
       }
