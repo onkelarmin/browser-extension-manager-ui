@@ -17,7 +17,7 @@ type Props = {
 const { title, desc, logo, isActive } = Astro.props;
 ---
 
-<article class="border-default">
+<article class="bg-container-default pad-lg border-card br-lg bs-card">
   <Icon name={logo} aria-hidden="true" />
   <Heading tag="h2" size="h2" text={title} />
   <p>{desc}</p>

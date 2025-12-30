@@ -22,7 +22,7 @@
   --br-pill: 100vmax;
 
   // Box-shadows
-  @each $size, $value in $box-shadows {
-    --bs-#{$size}: #{$value};
+  @each $semantic, $value in $box-shadows-offsets {
+    --bs-#{$semantic}: #{$value} var(--clr-bs-#{$semantic});
   }
 }

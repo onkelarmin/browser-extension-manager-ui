@@ -48,6 +48,14 @@
       }
     }
   }
+  // Box-shadows
+  @each $semantic, $mode-map in $box-shadow-colors {
+    @each $mode, $value in $mode-map {
+      @if $mode == $theme {
+        --clr-bs-#{$semantic}: #{$value};
+      }
+    }
+  }
   // Button-colors
   @each $variant, $state-map in $button-colors {
     @each $state, $role-map in $state-map {
@@ -91,6 +99,14 @@
       @each $mode, $value in $mode-map {
         @if $mode == $theme {
           --bc-#{$semantic}: var(--clr-#{$value});
+        }
+      }
+    }
+    // Box-shadows
+    @each $semantic, $mode-map in $box-shadow-colors {
+      @each $mode, $value in $mode-map {
+        @if $mode == $theme {
+          --clr-bs-#{$semantic}: #{$value};
         }
       }
     }

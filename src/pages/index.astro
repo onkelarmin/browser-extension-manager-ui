@@ -56,10 +56,17 @@ const allExtensions = await getCollection("extensions");
 </MainLayout>
 
 <style lang="scss">
+  @use "@sass/miscellaneous" as *;
+
   .extensions-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
     gap: var(--space-cont-md);
     list-style: none;
+    margin-block-start: 2.5rem;
+
+    @include mq(medium) {
+      margin-block-start: 2rem;
+    }
   }
 </style>

@@ -4,16 +4,25 @@ $border-widths: (
 );
 
 $border-colors: (
-  "default": (
+  "header": (
+    "light": "neutral-200",
+    "dark": transparent,
+  ),
+  "card": (
     "light": "neutral-200",
     "dark": "neutral-600",
   ),
 );
 
 $borders: (
-  "default": (
+  "header": (
     "width": "md",
     "style": "solid",
-    "color": "default",
+    "color": "header",
+  ),
+  "card": (
+    "width": "md",
+    "style": "solid",
+    "color": "card",
   ),
 );

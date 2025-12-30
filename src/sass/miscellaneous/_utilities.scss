@@ -50,9 +50,9 @@
 }
 
 // Box-shadows
-@each $size, $value in $box-shadows {
-  .bs-#{$size} {
-    box-shadow: var(--br-#{$size});
+@each $semantic, $option-map in $box-shadows {
+  .bs-#{$semantic} {
+    box-shadow: #{$option-map};
   }
 }
 
