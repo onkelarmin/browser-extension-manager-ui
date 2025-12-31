@@ -7,7 +7,7 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"button"> {
   type?: "button" | "submit";
-  variant: "default" | "active";
+  variant: "default";
   size: "small" | "large";
   text?: string;
   icon?: string;
@@ -43,7 +43,9 @@ const {
     border-width: var(--bw-md);
     transition:
       color var(--transition-default),
-      background-color var(--transition-default);
+      background-color var(--transition-default),
+      border-width var(--transition-default),
+      border-color var(--transition-default);
 
     &:not(:disabled) {
       cursor: pointer;
@@ -72,35 +74,11 @@ const {
       }
 
       &:focus-visible {
+        background-color: var(--btn-default-focus-bg);
         border-color: var(--btn-default-focus-border);
         box-shadow:
           0 0 0 var(--bw-lg) var(--btn-default-focus-border),
           0 0 0 calc(var(--bw-lg) * 2) var(--btn-default-focus-outline);
-      }
-    }
-
-    &.active {
-      background-color: var(--btn-active-idle-bg);
-      color: var(--btn-active-idle-fg);
-      border-color: var(--btn-active-idle-border);
-
-      @media (hover: hover) {
-        &:hover {
-          background-color: var(--btn-active-hover-bg);
-          color: var(--btn-active-hover-fg);
-          border-color: var(--btn-active-hover-border);
-        }
-      }
-
-      &:active {
-        // No pressed state
-      }
-
-      &:focus-visible {
-        border-color: var(--btn-active-focus-border);
-        box-shadow:
-          0 0 0 var(--bw-lg) var(--btn-active-focus-border),
-          0 0 0 calc(var(--bw-lg) * 2) var(--btn-active-focus-outline);
       }
     }
 

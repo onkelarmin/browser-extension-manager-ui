@@ -1,7 +1,7 @@
 ---
 // Component imports
 import ExtensionCard from "@/components/atomic/ExtensionCard.astro";
-import Button from "@/components/utilities/Button.astro";
+import FilterButton from "@/components/atomic/FilterButton.astro";
 import FlexGroup from "@/components/utilities/FlexGroup.astro";
 import Heading from "@/components/utilities/Heading.astro";
 import Wrapper from "@/components/utilities/Wrapper.astro";
@@ -17,6 +17,7 @@ const allExtensions = await getCollection("extensions");
   <section class="extensions-section" aria-labelledby="extensions-title">
     <div class="pad-sect-start-md">
       <Wrapper>
+        <!-- Header -->
         <header>
           <FlexGroup dir="col" primAxis="between" gap="xl" classes="dir-md-row">
             <Heading
@@ -25,29 +26,33 @@ const allExtensions = await getCollection("extensions");
               text="Extensions List"
               id="extensions-title"
             />
-
             <fieldset class="border-none">
               <legend class="visually-hidden">Filter by status</legend>
               <FlexGroup>
-                <Button text="All" variant="default" size="large" />
-                <Button text="Active" variant="default" size="large" />
-                <Button text="Inactive" variant="default" size="large" />
+                <FilterButton option="all" isChecked />
+                <FilterButton option="active" />
+                <FilterButton option="inactive" />
               </FlexGroup>
             </fieldset>
           </FlexGroup>
         </header>
+
+        <!-- Extensions-List -->
         <ul class="extensions-list">
           {
-            allExtensions.map((e) => (
-              <li>
-                <ExtensionCard
-                  title={e.data.name}
-                  logo={e.data.logo}
-                  desc={e.data.description}
-                  isActive={e.data.isActive}
-                />
-              </li>
-            ))
+            allExtensions.map(
+              ({ data: { name, nameKebab, logo, description, isActive } }) => (
+                <li>
+                  <ExtensionCard
+                    title={name}
+                    id={nameKebab}
+                    logo={logo}
+                    desc={description}
+                    isActive={isActive}
+                  />
+                </li>
+              )
+            )
           }
         </ul>
       </Wrapper>
@@ -61,6 +66,7 @@ const allExtensions = await getCollection("extensions");
   .extensions-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    grid-auto-rows: 1fr;
     gap: var(--space-cont-md);
     list-style: none;
     margin-block-start: 2.5rem;
@@ -70,3 +76,60 @@ const allExtensions = await getCollection("extensions");
     }
   }
 </style>
+
+<script>
+  // Elements
+  const filterButtons = [
+    ...document.querySelectorAll("input[name='filter-status']"),
+  ] as HTMLInputElement[];
+  const statusToggles = [
+    ...document.querySelectorAll(".status-toggle > input"),
+  ] as HTMLInputElement[];
+  const allExtensions = [
+    ...document.querySelectorAll(".extension-card"),
+  ] as HTMLElement[];
+
+  // Functions
+  function filterExtensions(filter: string) {
+    allExtensions.forEach((ex) => {
+      ex.closest("li")?.removeAttribute("hidden");
+      if (filter === "all") return;
+
+      if (ex.dataset.status !== filter) {
+        ex.closest("li")?.setAttribute("hidden", "true");
+      }
+    });
+  }
+
+  // Event-listeners
+  filterButtons.forEach((el) => {
+    el.addEventListener("change", (e) => {
+      const target = e.currentTarget as HTMLInputElement;
+      const filter = target.getAttribute("value");
+
+      if (filter !== null) filterExtensions(filter);
+    });
+  });
+
+  statusToggles.forEach((el) => {
+    el.addEventListener("change", (e) => {
+      const target = e.currentTarget as HTMLInputElement;
+      if (target.hasAttribute("checked")) {
+        target.removeAttribute("checked");
+        target
+          .closest(".extension-card")
+          ?.setAttribute("data-status", "inactive");
+      } else {
+        target.setAttribute("checked", "");
+        target
+          .closest(".extension-card")
+          ?.setAttribute("data-status", "active");
+      }
+      const checkedFilter = document.querySelector<HTMLInputElement>(
+        'input[type="radio"][name="filter-status"]:checked'
+      );
+      const filter = checkedFilter?.value;
+      if (filter !== undefined) filterExtensions(filter);
+    });
+  });
+</script>

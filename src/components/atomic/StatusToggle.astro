@@ -1,0 +1,80 @@
+---
+type Props = {
+  name: string;
+  id: string;
+  isActive: boolean;
+};
+
+const { name, id, isActive } = Astro.props;
+---
+
+<label class="status-toggle">
+  <span class="visually-hidden">Enable {name}</span>
+  <input
+    type="checkbox"
+    id={id}
+    role="switch"
+    class="visually-hidden"
+    checked={isActive}
+  />
+</label>
+
+<style lang="scss">
+  .status-toggle {
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    position: relative;
+    width: var(--size-toggle-track-width);
+    height: var(--size-toggle-track-height);
+    background-color: var(--bg-toggle-track-inactive-idle);
+    border-radius: var(--br-pill);
+    cursor: pointer;
+    transition: background-color var(--transition-default);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--bg-toggle-track-inactive-hover);
+      }
+    }
+
+    &:has(input:focus-visible) {
+      outline: var(--bw-lg) solid var(--btn-default-focus-outline);
+      outline-offset: var(--bw-lg);
+    }
+
+    &::before {
+      --_inset: 0.125rem;
+
+      content: "";
+      position: absolute;
+      left: var(--_inset);
+      width: var(--size-toggle-thumb);
+      aspect-ratio: 1;
+      border-radius: var(--br-round);
+      background-color: var(--bg-toggle-thumb-inactive-default);
+      box-shadow: var(--bs-toggle-inactive-1), var(--bs-toggle-inactive-2);
+      transition: transform var(--transition-default);
+    }
+
+    // Active state
+    &:has(input:checked) {
+      background-color: var(--bg-toggle-track-active-idle);
+
+      &::before {
+        background-color: var(--bg-toggle-thumb-active-default);
+        box-shadow: var(--bs-toggle-active-1), var(--bs-toggle-active-2);
+        transform: translateX(
+          calc(
+            var(--size-toggle-track-width) - var(--size-toggle-thumb) -
+              (2 * var(--_inset))
+          )
+        );
+      }
+
+      &:hover {
+        background-color: var(--bg-toggle-track-active-hover);
+      }
+    }
+  }
+</style>

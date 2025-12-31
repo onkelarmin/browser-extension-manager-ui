@@ -1,0 +1,84 @@
+---
+// Types
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  option: string;
+  isChecked?: boolean;
+  classes?: string;
+}
+
+const { option, isChecked = false, classes, ...rest } = Astro.props;
+---
+
+<label>
+  <input
+    type="radio"
+    name="filter-status"
+    value={option.toLocaleLowerCase()}
+    checked={isChecked}
+    class="visually-hidden"
+  />
+  {option}
+</label>
+
+<style lang="scss">
+  label {
+    background-color: var(--btn-unselected-idle-bg);
+    color: var(--btn-unselected-idle-fg);
+    border: var(--bw-md) solid var(--btn-unselected-idle-border);
+    font: var(--font-3);
+    letter-spacing: var(--ls-lg);
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: var(--br-pill);
+    box-shadow: var(--bs-filter-button);
+    padding-inline: var(--pad-select-lg);
+    padding-block: var(--pad-select-xs);
+    transition:
+      color var(--transition-default),
+      background-color var(--transition-default),
+      box-shadow var(--transition-default),
+      border-color var(--transition-default);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--btn-unselected-hover-bg);
+        color: var(--btn-unselected-hover-fg);
+        border: var(--bw-md) solid var(--btn-unselected-hover-border);
+        box-shadow: var(--bs-none);
+      }
+    }
+
+    &:has(input:focus-visible) {
+      border-color: var(--btn-unselected-focus-border);
+      box-shadow:
+        0 0 0 var(--bw-lg) var(--btn-unselected-focus-border),
+        0 0 0 calc(var(--bw-lg) * 2) var(--btn-unselected-focus-outline);
+    }
+
+    // Selected styles
+    &:has(input:checked) {
+      background-color: var(--btn-selected-idle-bg);
+      color: var(--btn-selected-idle-fg);
+      border: var(--bw-md) solid var(--btn-selected-idle-border);
+      // font: var(--font-4);
+      box-shadow: var(--bs-none);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--btn-selected-hover-bg);
+          color: var(--btn-selected-hover-fg);
+          border: var(--bw-md) solid var(--btn-selected-hover-border);
+        }
+      }
+
+      &:has(input:focus-visible) {
+        border-color: var(--btn-selected-focus-border);
+        box-shadow:
+          0 0 0 var(--bw-lg) var(--btn-selected-focus-border),
+          0 0 0 calc(var(--bw-lg) * 2) var(--btn-selected-focus-outline);
+      }
+    }
+  }
+</style>

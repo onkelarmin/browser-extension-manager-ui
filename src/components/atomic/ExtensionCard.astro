@@ -6,29 +6,63 @@ import { Icon } from "astro-icon/components";
 import Heading from "../utilities/Heading.astro";
 import FlexGroup from "../utilities/FlexGroup.astro";
 import Button from "../utilities/Button.astro";
+import StatusToggle from "./StatusToggle.astro";
 
 type Props = {
   title: string;
+  id: string;
   desc: string;
   logo: string;
   isActive: boolean;
 };
 
-const { title, desc, logo, isActive } = Astro.props;
+const { title, id, desc, logo, isActive } = Astro.props;
 ---
 
-<article class="bg-container-default pad-lg border-card br-lg bs-card">
-  <Icon name={logo} aria-hidden="true" />
-  <Heading tag="h2" size="h2" text={title} />
-  <p>{desc}</p>
-  <FlexGroup primAxis="between">
-    <Button variant="default" size="small" text="Remove" />
-    <input type="checkbox" name="" id="" />
-  </FlexGroup>
+<article
+  class="extension-card bg-container-default pad-lg border-card br-lg bs-card"
+  data-status={isActive ? "active" : "inactive"}
+>
+  <div class="layout">
+    <!-- Details -->
+    <div class="details">
+      <Icon name={logo} aria-hidden="true" />
+      <div class="flow-sm">
+        <Heading tag="h2" size="h2" text={title} />
+        <p>{desc}</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <FlexGroup primAxis="between">
+      <Button variant="default" size="small" text="Remove" />
+      <StatusToggle name={title} id={id} isActive={isActive} />
+    </FlexGroup>
+  </div>
 </article>
 
 <style lang="scss">
+  .extension-card {
+    height: 100%;
+
+    .layout {
+      height: inherit;
+      display: grid;
+      gap: var(--space-cont-lg);
+
+      > * {
+        align-self: end;
+      }
+    }
+  }
+
   [data-icon] {
     width: var(--size-icon-card);
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-cont-lg);
   }
 </style>

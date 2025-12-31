@@ -68,6 +68,38 @@ $background-colors: (
       "dark": "neutral-600",
     ),
   ),
+  "toggle-track-inactive": (
+    "idle": (
+      "light": "neutral-300",
+      "dark": "neutral-600",
+    ),
+    "hover": (
+      "light": "neutral-300",
+      "dark": "neutral-600",
+    ),
+  ),
+  "toggle-track-active": (
+    "idle": (
+      "light": "brand-700",
+      "dark": "brand-400",
+    ),
+    "hover": (
+      "light": "brand-500",
+      "dark": "brand-500",
+    ),
+  ),
+  "toggle-thumb-inactive": (
+    "default": (
+      "light": "neutral-000",
+      "dark": "neutral-000",
+    ),
+  ),
+  "toggle-thumb-active": (
+    "default": (
+      "light": "neutral-000",
+      "dark": "neutral-000",
+    ),
+  ),
 );
 
 // Foreground-colors
@@ -117,6 +149,55 @@ $button-colors: (
         "dark": "neutral-000",
       ),
       "border": (
+        "light": "neutral-300",
+        "dark": "neutral-600",
+      ),
+    ),
+    "hover": (
+      "bg": (
+        "light": "brand-700",
+        "dark": "brand-400",
+      ),
+      "fg": (
+        "light": "neutral-000",
+        "dark": "neutral-900",
+      ),
+
+      "border": (
+        "light": "brand-700",
+        "dark": "brand-400",
+      ),
+    ),
+    "focus": (
+      "bg": (
+        "light": "neutral-100",
+        "dark": "neutral-600",
+      ),
+
+      "border": (
+        "light": "neutral-000",
+        "dark": "neutral-900",
+      ),
+
+      "outline": (
+        "light": "brand-700",
+        "dark": "brand-400",
+      ),
+    ),
+  ),
+  "unselected": (
+    "idle": (
+      "bg": (
+        "light": "neutral-000",
+        "dark": "neutral-700",
+      ),
+
+      "fg": (
+        "light": "neutral-900",
+        "dark": "neutral-000",
+      ),
+
+      "border": (
         "light": "neutral-200",
         "dark": "neutral-600",
       ),
@@ -126,6 +207,7 @@ $button-colors: (
         "light": "neutral-000-o70",
         "dark": "neutral-600",
       ),
+
       "fg": (
         "light": "neutral-900-o70",
         "dark": "neutral-000",
@@ -148,7 +230,7 @@ $button-colors: (
       ),
     ),
   ),
-  "active": (
+  "selected": (
     "idle": (
       "bg": (
         "light": "brand-700",

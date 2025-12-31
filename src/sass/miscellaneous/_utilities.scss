@@ -82,11 +82,6 @@
   text-transform: uppercase;
 }
 
-// Flow
-.flow > * + * {
-  margin-top: var(--flow-spacer, var(--space-cont-md));
-}
-
 // Centre horizontally
 .mx-auto {
   margin-inline: auto;
@@ -164,6 +159,12 @@
   }
   .mar-inline-end-#{$size} {
     margin-inline-end: var(--space-cont-#{$size});
+  }
+}
+
+@each $size, $value in $spacer-container {
+  .flow-#{$size} > * + * {
+    margin-top: var(--space-cont-#{$size});
   }
 }
 

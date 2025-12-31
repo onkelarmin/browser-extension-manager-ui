@@ -7,6 +7,7 @@ const extensions = defineCollection({
   schema: z.object({
     logo: z.string(),
     name: z.string(),
+    nameKebab: z.string(),
     description: z.string(),
     isActive: z.boolean(),
   }),
