@@ -1,5 +1,6 @@
 // Primitives
 $color-core-neutral: (
+  "transparent": transparent,
   "000": oklch(0.9927 0.0026 228.78),
   "000-o70": oklch(0.9927 0.0026 228.78 / 0.7),
   "100": oklch(0.9466 0 0),
@@ -57,6 +58,10 @@ $background-colors: (
       "light": "neutral-000",
       "dark": "neutral-800",
     ),
+    "selection": (
+      "light": "brand-700",
+      "dark": "brand-500",
+    ),
   ),
   "icon-theme": (
     "idle": (
@@ -111,6 +116,10 @@ $foreground-colors: (
     ),
     "strong": (
       "light": "neutral-900",
+      "dark": "neutral-000",
+    ),
+    "selection": (
+      "light": "neutral-100",
       "dark": "neutral-000",
     ),
   ),

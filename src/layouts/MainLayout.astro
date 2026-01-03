@@ -9,12 +9,25 @@ import "@sass/main.scss";
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <!-- Set Light/Dark mode -->
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("theme-preference");
+        const system = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const theme = stored ?? (system ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <title>Frontend Mentor | Browser Extensions</title>
   </head>
   <body>
-    <Header />
-    <main id="main">
-      <slot />
-    </main>
+    <div class="gsap-auto-alpha">
+      <Header />
+      <main id="main">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>

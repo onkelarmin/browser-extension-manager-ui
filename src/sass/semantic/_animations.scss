@@ -1,13 +1,28 @@
+@use "../core" as *;
+@use "sass:map";
+
 :root {
-  --transition-default: 200ms ease-in;
+  @each $speed, $value in $animation-durations {
+    --motion-#{$speed}: #{$value};
+  }
+
+  @each $ease, $value in $animation-easings {
+    --ease-#{$ease}: #{$value};
+  }
+
+  @each $name, $params-map in $transitions {
+    --trans-#{$name}: var(--motion-#{map.get($params-map, "motion")})
+      var(--ease-#{map.get($params-map, "ease")});
+  }
 }
 
+// View transition theme switch
 ::view-transition-old(root) {
-  animation-delay: 500ms;
+  animation-delay: var(--motion-slow);
 }
 
 ::view-transition-new(root) {
-  animation: circle-in 500ms;
+  animation: circle-in var(--motion-slow);
 }
 
 @keyframes circle-in {

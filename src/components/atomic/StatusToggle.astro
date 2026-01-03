@@ -30,7 +30,7 @@ const { name, id, isActive } = Astro.props;
     background-color: var(--bg-toggle-track-inactive-idle);
     border-radius: var(--br-pill);
     cursor: pointer;
-    transition: background-color var(--transition-default);
+    transition: background-color var(--trans-default);
 
     @media (hover: hover) {
       &:hover {
@@ -54,7 +54,7 @@ const { name, id, isActive } = Astro.props;
       border-radius: var(--br-round);
       background-color: var(--bg-toggle-thumb-inactive-default);
       box-shadow: var(--bs-toggle-inactive-1), var(--bs-toggle-inactive-2);
-      transition: transform var(--transition-default);
+      transition: transform var(--trans-default);
     }
 
     // Active state

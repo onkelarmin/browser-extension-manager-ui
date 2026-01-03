@@ -26,7 +26,7 @@ const allExtensions = await getCollection("extensions");
               text="Extensions List"
               id="extensions-title"
             />
-            <fieldset class="border-none">
+            <fieldset class="border-none" id="filter-controls">
               <legend class="visually-hidden">Filter by status</legend>
               <FlexGroup>
                 <FilterButton option="all" isChecked />
@@ -78,6 +78,10 @@ const allExtensions = await getCollection("extensions");
 </style>
 
 <script>
+  // Imports
+  import { gsap } from "gsap";
+  import { cssTime } from "@lib/helper";
+
   // Elements
   const filterButtons = [
     ...document.querySelectorAll("input[name='filter-status']"),
@@ -85,6 +89,9 @@ const allExtensions = await getCollection("extensions");
   const statusToggles = [
     ...document.querySelectorAll(".status-toggle > input"),
   ] as HTMLInputElement[];
+  const removeButtons = [
+    ...document.querySelectorAll(".remove-button"),
+  ] as HTMLButtonElement[];
   const allExtensions = [
     ...document.querySelectorAll(".extension-card"),
   ] as HTMLElement[];
@@ -114,22 +121,71 @@ const allExtensions = await getCollection("extensions");
   statusToggles.forEach((el) => {
     el.addEventListener("change", (e) => {
       const target = e.currentTarget as HTMLInputElement;
+      const card = target.closest(".extension-card");
+      const checkedFilter = document.querySelector<HTMLInputElement>(
+        'input[type="radio"][name="filter-status"]:checked'
+      );
+      const filter = checkedFilter?.value;
+      // flip checked attribute
       if (target.hasAttribute("checked")) {
         target.removeAttribute("checked");
-        target
-          .closest(".extension-card")
-          ?.setAttribute("data-status", "inactive");
+        card?.setAttribute("data-status", "inactive");
       } else {
         target.setAttribute("checked", "");
         target
           .closest(".extension-card")
           ?.setAttribute("data-status", "active");
       }
-      const checkedFilter = document.querySelector<HTMLInputElement>(
-        'input[type="radio"][name="filter-status"]:checked'
-      );
-      const filter = checkedFilter?.value;
-      if (filter !== undefined) filterExtensions(filter);
+      // animate and update view if filtered
+      if (filter !== "all") {
+        gsap.to(card, {
+          opacity: 0,
+          duration: 0.4,
+          ease: "linear",
+          onComplete: () => {
+            gsap.set(card, { opacity: 1 });
+            if (filter !== undefined) filterExtensions(filter);
+          },
+        });
+      }
     });
   });
+
+  removeButtons.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const clicked = e.currentTarget as HTMLButtonElement;
+      const li = clicked.closest("li");
+      gsap.to(li, {
+        opacity: 0,
+        duration: 0.4,
+        ease: "linear",
+        onComplete: () => {
+          li?.remove();
+        },
+      });
+    });
+  });
+
+  // GSAP
+  const tl = gsap.timeline();
+  tl.from(".gsap-auto-alpha", { autoAlpha: 0 })
+    .from("#header-inner", {
+      y: -20,
+      opacity: 0,
+      duration: 0.5,
+      ease: "back",
+    })
+    .from("#extensions-title", { x: -20, opacity: 0, ease: "back" }, "<50%")
+    .from("#filter-controls", { x: 20, opacity: 0, ease: "back" }, "<")
+    .from(
+      ".extensions-list > li",
+      {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.5,
+        ease: "back",
+        stagger: { each: 0.1, ease: "power1.out" },
+      },
+      "<50%"
+    );
 </script>

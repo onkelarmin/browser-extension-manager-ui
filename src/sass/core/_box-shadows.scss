@@ -3,24 +3,24 @@
 // bs-none is used for transitions
 $box-shadow-colors: (
   "none": (
-    "light": transparent,
-    "dark": transparent,
+    "light": "neutral-transparent",
+    "dark": "neutral-transparent",
   ),
   "header": (
     "light": #d9e5f4,
-    "dark": transparent,
+    "dark": "neutral-transparent",
   ),
   "filter-button": (
     "light": color.change(#b8c4d7, $alpha: 0.4),
-    "dark": transparent,
+    "dark": "neutral-transparent",
   ),
   "card-1": (
     "light": color.change(#c2cee1, $alpha: 0.2),
-    "dark": transparent,
+    "dark": "neutral-transparent",
   ),
   "card-2": (
     "light": color.change(#c2cee1, $alpha: 0.22),
-    "dark": transparent,
+    "dark": "neutral-transparent",
   ),
   "toggle-inactive-1": (
     "light": color.change(#0a0d12, $alpha: 0.15),

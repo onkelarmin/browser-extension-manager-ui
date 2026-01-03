@@ -35,7 +35,12 @@ const { title, id, desc, logo, isActive } = Astro.props;
 
     <!-- Controls -->
     <FlexGroup primAxis="between">
-      <Button variant="default" size="small" text="Remove" />
+      <Button
+        variant="default"
+        size="small"
+        text="Remove"
+        classes="remove-button"
+      />
       <StatusToggle name={title} id={id} isActive={isActive} />
     </FlexGroup>
   </div>
@@ -50,7 +55,7 @@ const { title, id, desc, logo, isActive } = Astro.props;
       display: grid;
       gap: var(--space-cont-lg);
 
-      > * {
+      > :last-child {
         align-self: end;
       }
     }

@@ -37,8 +37,8 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
     padding: var(--pad-select-sm);
     border-radius: var(--br-sm);
     transition:
-      color var(--transition-default),
-      background-color var(--transition-default);
+      color var(--trans-default),
+      background-color var(--trans-default);
 
     &:hover {
       color: var(--fg-icon-theme-hover);
@@ -84,13 +84,9 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
 
   //   Functions
   function getThemePreference() {
-    const theme = localStorage.getItem(storageKey);
-    if (theme !== null) {
-      return theme;
-    } else
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+    const stored = localStorage.getItem(storageKey);
+    const system = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return stored ?? (system ? "dark" : "light");
   }
 
   function setThemePreference() {
@@ -98,7 +94,7 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
   }
 
   function setTheme() {
-    root.setAttribute("data-theme", theme.value);
+    root.dataset.theme = theme.value;
     themeToggle.setAttribute(
       "aria-pressed",
       theme.value === "dark" ? "true" : "false"
@@ -107,7 +103,6 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
 
   function handleThemeChange() {
     setThemePreference();
-
     if (!document.startViewTransition) {
       setTheme();
       return;
@@ -117,9 +112,6 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
       setTheme();
     });
   }
-
-  //   Function-calls
-  setTheme();
 
   // Event-listeners
   themeToggle.addEventListener("click", () => {

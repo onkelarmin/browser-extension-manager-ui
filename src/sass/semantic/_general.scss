@@ -11,6 +11,6 @@ body {
   padding-block-end: var(--pad-page-block-end);
 }
 ::selection {
-  background-color: green;
-  color: blue;
+  background-color: var(--bg-container-selection);
+  color: var(--fg-text-selection);
 }
