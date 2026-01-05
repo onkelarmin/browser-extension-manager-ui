@@ -3,14 +3,17 @@ import Header from "@/components/sections/Header.astro";
 import "@sass/main.scss";
 ---
 
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <!-- Set Light/Dark mode -->
     <script is:inline>
+      // remove no-js and add js class to HTML
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("js");
+      // Set Light/Dark mode
       (() => {
         const stored = localStorage.getItem("theme-preference");
         const system = window.matchMedia(

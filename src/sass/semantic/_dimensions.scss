@@ -1,6 +1,11 @@
 @use "../core" as *;
 
 :root {
+  // Breakpoints
+  @each $size, $value in $breakpoints {
+    --bp-#{$size}: #{px-to-em($value)};
+  }
+
   // Wrapper max-widths
   @each $size, $value in $wrapper-sizes {
     --size-wrapper-#{$size}: #{px-to-rem($value)};

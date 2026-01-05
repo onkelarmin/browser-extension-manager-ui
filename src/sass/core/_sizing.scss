@@ -2,9 +2,9 @@
 
 // Wrapper max-widths
 $wrapper-sizes: (
-  "default": 1170px,
-  "narrow": 1088px,
-  "wide": 1360px,
+  default: 1170px,
+  narrow: 1088px,
+  wide: 1360px,
 );
 
 //  Logo
@@ -12,7 +12,7 @@ $size-logo-md-width-min: 179px;
 $size-logo-md-width-max: 179px;
 
 $logo-sizes: (
-  "md": fluid($size-logo-md-width-min, $size-logo-md-width-max),
+  md: fluid($size-logo-md-width-min, $size-logo-md-width-max),
 );
 
 // Icons
@@ -22,8 +22,8 @@ $size-icon-card-min: 60px;
 $size-icon-card-max: 60px;
 
 $icon-sizes: (
-  "theme": fluid($size-icon-theme-min, $size-icon-theme-max),
-  "card": fluid($size-icon-card-min, $size-icon-card-max),
+  theme: fluid($size-icon-theme-min, $size-icon-theme-max),
+  card: fluid($size-icon-card-min, $size-icon-card-max),
 );
 
 // Selectables : Element -> Property
@@ -35,11 +35,11 @@ $size-toggle-track-height-min: 20px;
 $size-toggle-track-height-max: 20px;
 
 $selectable-sizes: (
-  "toggle": (
-    "thumb": fluid($size-toggle-thumb-min, $size-toggle-thumb-max),
-    "track-width":
+  toggle: (
+    thumb: fluid($size-toggle-thumb-min, $size-toggle-thumb-max),
+    track-width:
       fluid($size-toggle-track-width-min, $size-toggle-track-width-max),
-    "track-height":
+    track-height:
       fluid($size-toggle-track-height-min, $size-toggle-track-height-max),
   ),
 );

@@ -76,54 +76,52 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
     "theme-toggle"
   ) as HTMLButtonElement;
 
-  //   Constants
+  //   Variables
   const storageKey = "theme-preference";
-  const theme = {
-    value: getThemePreference(),
-  };
+  let theme = root.dataset.theme as string;
+  // Set ThemeToggle to initial theme
+  updateThemeToggle();
 
-  //   Functions
-  function getThemePreference() {
-    const stored = localStorage.getItem(storageKey);
-    const system = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return stored ?? (system ? "dark" : "light");
+  // Functions
+  function setLocalStorage() {
+    localStorage.setItem(storageKey, theme);
   }
 
-  function setThemePreference() {
-    localStorage.setItem(storageKey, theme.value);
-  }
-
-  function setTheme() {
-    root.dataset.theme = theme.value;
+  function updateThemeToggle() {
     themeToggle.setAttribute(
       "aria-pressed",
-      theme.value === "dark" ? "true" : "false"
+      theme === "dark" ? "true" : "false"
     );
   }
 
+  function updateUI() {
+    root.dataset.theme = theme;
+    updateThemeToggle();
+  }
+
   function handleThemeChange() {
-    setThemePreference();
+    setLocalStorage();
     if (!document.startViewTransition) {
-      setTheme();
+      updateUI();
       return;
     }
 
     document.startViewTransition(() => {
-      setTheme();
+      updateUI();
     });
   }
 
   // Event-listeners
   themeToggle.addEventListener("click", () => {
     // flip current value
-    theme.value = theme.value === "light" ? "dark" : "light";
+    theme = theme === "light" ? "dark" : "light";
     handleThemeChange();
   });
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
-      theme.value = e.matches ? "dark" : "light";
+      theme = e.matches ? "dark" : "light";
       handleThemeChange();
     });
 </script>

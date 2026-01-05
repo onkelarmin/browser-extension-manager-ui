@@ -140,8 +140,8 @@ const allExtensions = await getCollection("extensions");
       if (filter !== "all") {
         gsap.to(card, {
           opacity: 0,
-          duration: 0.4,
-          ease: "linear",
+          duration: cssTime("--motion-default") * 1.5,
+          ease: "power1.in",
           onComplete: () => {
             gsap.set(card, { opacity: 1 });
             if (filter !== undefined) filterExtensions(filter);
@@ -157,8 +157,8 @@ const allExtensions = await getCollection("extensions");
       const li = clicked.closest("li");
       gsap.to(li, {
         opacity: 0,
-        duration: 0.4,
-        ease: "linear",
+        duration: cssTime("--motion-default") * 1.5,
+        ease: "power1.in",
         onComplete: () => {
           li?.remove();
         },
@@ -168,11 +168,11 @@ const allExtensions = await getCollection("extensions");
 
   // GSAP
   const tl = gsap.timeline();
-  tl.from(".gsap-auto-alpha", { autoAlpha: 0 })
+  tl.to(".gsap-auto-alpha", { autoAlpha: 1 })
     .from("#header-inner", {
-      y: -20,
+      yPercent: -50,
       opacity: 0,
-      duration: 0.5,
+      duration: cssTime("--motion-slow"),
       ease: "back",
     })
     .from("#extensions-title", { x: -20, opacity: 0, ease: "back" }, "<50%")
@@ -182,9 +182,9 @@ const allExtensions = await getCollection("extensions");
       {
         opacity: 0,
         scale: 0.9,
-        duration: 0.5,
+        duration: cssTime("--motion-slow"),
         ease: "back",
-        stagger: { each: 0.1, ease: "power1.out" },
+        stagger: 0.1,
       },
       "<50%"
     );

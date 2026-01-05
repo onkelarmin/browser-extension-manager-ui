@@ -11,28 +11,28 @@ $padding-page-block-end-min: 64px;
 $padding-page-block-end-max: 64px;
 
 $padding-page: (
-  "inline-start":
+  inline-start:
     fluid(
       $padding-page-inline-min,
       $padding-page-inline-max,
       $viewport-min,
       map.get($breakpoints, "medium")
     ),
-  "inline-end":
+  inline-end:
     fluid(
       $padding-page-inline-min,
       $padding-page-inline-max,
       $viewport-min,
       map.get($breakpoints, "medium")
     ),
-  "block-start":
+  block-start:
     fluid(
       $padding-page-block-start-min,
       $padding-page-block-start-max,
       map.get($breakpoints, "large"),
       $viewport-max
     ),
-  "block-end": fluid($padding-page-block-end-min, $padding-page-block-end-max),
+  block-end: fluid($padding-page-block-end-min, $padding-page-block-end-max),
 );
 
 // Section padding
@@ -40,7 +40,7 @@ $padding-section-md-min: 40px;
 $padding-section-md-max: 64px;
 
 $padding-section: (
-  "md": fluid($padding-section-md-min, $padding-section-md-max),
+  md: fluid($padding-section-md-min, $padding-section-md-max),
 );
 
 // Container padding
@@ -52,9 +52,9 @@ $padding-container-lg-min: 20px;
 $padding-container-lg-max: 20px;
 
 $padding-container: (
-  "sm": fluid($padding-container-sm-min, $padding-container-sm-max),
-  "md": fluid($padding-container-md-min, $padding-container-md-max),
-  "lg": fluid($padding-container-lg-min, $padding-container-lg-max),
+  sm: fluid($padding-container-sm-min, $padding-container-sm-max),
+  md: fluid($padding-container-md-min, $padding-container-md-max),
+  lg: fluid($padding-container-lg-min, $padding-container-lg-max),
 );
 
 // Container spacing
@@ -68,10 +68,10 @@ $spacer-container-xl-min: 24px;
 $spacer-container-xl-max: 24px;
 
 $spacer-container: (
-  "sm": fluid($spacer-container-sm-min, $spacer-container-sm-max),
-  "md": fluid($spacer-container-md-min, $spacer-container-md-max),
-  "lg": fluid($spacer-container-lg-min, $spacer-container-lg-max),
-  "xl": fluid($spacer-container-xl-min, $spacer-container-xl-max),
+  sm: fluid($spacer-container-sm-min, $spacer-container-sm-max),
+  md: fluid($spacer-container-md-min, $spacer-container-md-max),
+  lg: fluid($spacer-container-lg-min, $spacer-container-lg-max),
+  xl: fluid($spacer-container-xl-min, $spacer-container-xl-max),
 );
 
 // Selectable padding
@@ -85,8 +85,8 @@ $padding-selectable-lg-min: 20px;
 $padding-selectable-lg-max: 20px;
 
 $padding-selectable: (
-  "xs": fluid($padding-selectable-xs-min, $padding-selectable-xs-max),
-  "sm": fluid($padding-selectable-sm-min, $padding-selectable-sm-max),
-  "md": fluid($padding-selectable-md-min, $padding-selectable-md-max),
-  "lg": fluid($padding-selectable-lg-min, $padding-selectable-lg-max),
+  xs: fluid($padding-selectable-xs-min, $padding-selectable-xs-max),
+  sm: fluid($padding-selectable-sm-min, $padding-selectable-sm-max),
+  md: fluid($padding-selectable-md-min, $padding-selectable-md-max),
+  lg: fluid($padding-selectable-lg-min, $padding-selectable-lg-max),
 );

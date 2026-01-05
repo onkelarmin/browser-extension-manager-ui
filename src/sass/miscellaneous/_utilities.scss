@@ -180,8 +180,8 @@
   width: 1px;
 }
 
-.gsap-auto-alpha {
-  @media (scripting: enabled) {
-    visibility: hidden;
-  }
+// GSAP auto alpha
+.js .gsap-auto-alpha {
+  visibility: hidden;
+  opacity: 0;
 }
