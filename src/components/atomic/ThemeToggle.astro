@@ -15,6 +15,7 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
 ---
 
 <button
+  type="button"
   class:list={["theme-toggle", classes]}
   id="theme-toggle"
   aria-label={label}

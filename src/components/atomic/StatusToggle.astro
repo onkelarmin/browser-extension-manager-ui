@@ -9,7 +9,9 @@ const { name, id, isActive } = Astro.props;
 ---
 
 <label class="status-toggle">
-  <span class="visually-hidden">Enable {name}</span>
+  <span class="visually-hidden"
+    ><span class="state">{isActive ? "Diasble" : "Enable"}</span> {name}</span
+  >
   <input
     type="checkbox"
     id={id}

@@ -122,6 +122,9 @@ const allExtensions = await getCollection("extensions");
     el.addEventListener("change", (e) => {
       const target = e.currentTarget as HTMLInputElement;
       const card = target.closest(".extension-card");
+      const stateSpan = target
+        .closest("label")
+        ?.querySelector(".state") as HTMLSpanElement;
       const checkedFilter = document.querySelector<HTMLInputElement>(
         'input[type="radio"][name="filter-status"]:checked'
       );
@@ -130,11 +133,13 @@ const allExtensions = await getCollection("extensions");
       if (target.hasAttribute("checked")) {
         target.removeAttribute("checked");
         card?.setAttribute("data-status", "inactive");
+        stateSpan.innerText = "Enable";
       } else {
         target.setAttribute("checked", "");
         target
           .closest(".extension-card")
           ?.setAttribute("data-status", "active");
+        stateSpan.innerText = "Disable";
       }
       // animate and update view if filtered
       if (filter !== "all") {

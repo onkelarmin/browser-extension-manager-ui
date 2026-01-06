@@ -165,7 +165,7 @@
 // Flow
 @each $size, $value in $spacer-container {
   .flow-#{$size} > * + * {
-    margin-top: var(--space-cont-#{$size});
+    margin-block-start: var(--space-cont-#{$size});
   }
 }
 
