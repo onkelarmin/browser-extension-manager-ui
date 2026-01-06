@@ -10,7 +10,13 @@ body {
   padding-block-start: var(--pad-page-block-start);
   padding-block-end: var(--pad-page-block-end);
 }
+
 ::selection {
-  background-color: var(--bg-container-selection);
+  background-color: var(--bg-text-selection);
   color: var(--fg-text-selection);
+}
+
+::target-text {
+  background-color: var(--bg-text-target);
+  color: var(--fg-text-target);
 }

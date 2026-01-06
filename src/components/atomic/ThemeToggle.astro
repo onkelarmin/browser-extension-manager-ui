@@ -40,9 +40,11 @@ const { label = "Dark Mode", classes, ...rest } = Astro.props;
       color var(--trans-default),
       background-color var(--trans-default);
 
-    &:hover {
-      color: var(--fg-icon-theme-hover);
-      background-color: var(--bg-icon-theme-hover);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--fg-icon-theme-hover);
+        background-color: var(--bg-icon-theme-hover);
+      }
     }
 
     &:focus {

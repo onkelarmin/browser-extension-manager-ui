@@ -38,11 +38,11 @@ const allExtensions = await getCollection("extensions");
         </header>
 
         <!-- Extensions-List -->
-        <ul class="extensions-list">
+        <ul class="extensions-list" role="list">
           {
             allExtensions.map(
               ({ data: { name, nameKebab, logo, description, isActive } }) => (
-                <li>
+                <li role="listitem">
                   <ExtensionCard
                     title={name}
                     id={nameKebab}
@@ -80,7 +80,7 @@ const allExtensions = await getCollection("extensions");
 <script>
   // Imports
   import { gsap } from "gsap";
-  import { cssTime } from "@lib/helper";
+  import { cssTime, customProp } from "@lib/helper";
 
   // Elements
   const filterButtons = [
@@ -155,6 +155,7 @@ const allExtensions = await getCollection("extensions");
     el.addEventListener("click", (e) => {
       const clicked = e.currentTarget as HTMLButtonElement;
       const li = clicked.closest("li");
+      // animate and remove element
       gsap.to(li, {
         opacity: 0,
         duration: cssTime("--motion-default") * 1.5,
@@ -167,25 +168,53 @@ const allExtensions = await getCollection("extensions");
   });
 
   // GSAP
-  const tl = gsap.timeline();
-  tl.to(".gsap-auto-alpha", { autoAlpha: 1 })
-    .from("#header-inner", {
-      yPercent: -50,
-      opacity: 0,
-      duration: cssTime("--motion-slow"),
-      ease: "back",
-    })
-    .from("#extensions-title", { x: -20, opacity: 0, ease: "back" }, "<50%")
-    .from("#filter-controls", { x: 20, opacity: 0, ease: "back" }, "<")
-    .from(
-      ".extensions-list > li",
-      {
-        opacity: 0,
-        scale: 0.9,
-        duration: cssTime("--motion-slow"),
-        ease: "back",
-        stagger: 0.1,
-      },
-      "<50%"
-    );
+  const mm = gsap.matchMedia();
+  mm.add(
+    {
+      isMobileP: `(max-width: ${customProp("--bp-small")})`,
+      isMobileL: `(min-width: ${customProp("--bp-small")})`,
+      isTablet: `(min-width: ${customProp("--bp-medium")})`,
+      isDesktop: `(min-width: ${customProp("--bp-large")})`,
+      reduceMotion: "(prefers-reduced-motion: reduce)",
+    },
+    (context) => {
+      const { isTablet, reduceMotion } = context.conditions ?? {};
+
+      const duration = context.isReverted ? 0 : cssTime("--motion-slow");
+
+      const tl = gsap.timeline({
+        defaults: { duration: duration, ease: "back" },
+      });
+      tl.to(".gsap-auto-alpha", { autoAlpha: 1 })
+        .from("#header-inner", {
+          yPercent: reduceMotion ? 0 : isTablet ? -50 : 0,
+          opacity: 0,
+        })
+        .from(
+          "#extensions-title",
+          {
+            x: reduceMotion ? 0 : isTablet ? -20 : 0,
+            opacity: 0,
+          },
+          "<50%"
+        )
+        .from(
+          "#filter-controls",
+          {
+            x: reduceMotion ? 0 : isTablet ? 20 : 0,
+            opacity: 0,
+          },
+          "<"
+        )
+        .from(
+          ".extensions-list > li",
+          {
+            opacity: 0,
+            scale: reduceMotion ? 1 : 0.9,
+            stagger: 0.1,
+          },
+          "<50%"
+        );
+    }
+  );
 </script>

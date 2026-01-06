@@ -3,15 +3,20 @@ import Header from "@/components/sections/Header.astro";
 import "@sass/main.scss";
 ---
 
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <script is:inline>
-      // remove no-js and add js class to HTML
-      document.documentElement.classList.remove("no-js");
+      // add js class to HTML
       document.documentElement.classList.add("js");
       // Set Light/Dark mode
       (() => {

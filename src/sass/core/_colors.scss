@@ -58,7 +58,13 @@ $background-colors: (
       light: "neutral-000",
       dark: "neutral-800",
     ),
+  ),
+  text: (
     selection: (
+      light: "brand-700",
+      dark: "brand-500",
+    ),
+    target: (
       light: "brand-700",
       dark: "brand-500",
     ),
@@ -119,6 +125,10 @@ $foreground-colors: (
       dark: "neutral-000",
     ),
     selection: (
+      light: "neutral-100",
+      dark: "neutral-000",
+    ),
+    target: (
       light: "neutral-100",
       dark: "neutral-000",
     ),
